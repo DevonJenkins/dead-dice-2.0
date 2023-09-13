@@ -13,6 +13,10 @@ class Dice {
 
 	show(){
 		console.log('dice show function')
+
+		this.array.forEach((die) => {
+			die.show()
+		})
 	}
 }
 
@@ -23,8 +27,8 @@ class Die {
 	}
 
 	show(){
-		console.log('name: ', name)
-		console.log('value: ', value)
+		console.log('name: ', this.name)
+		console.log('value: ', this.value)
 	}
 };
 
@@ -45,6 +49,9 @@ function init(game){
 }
 
 function rollDice(dice){
+	//i'// need to instantiate a count variable
+	//whenever a 2 or 5 gets rolled, count --
+	//while i <= count 
 	for(let i = 1; i <= 5; i++) {
 		let randomNum = Math.floor(Math.random() * (5 - 1) + 1)
 		console.log(randomNum)
@@ -55,7 +62,7 @@ function rollDice(dice){
 
 function renderLogs(game, dice){
 	console.log(game.score)
-	console.log(dice)
+	dice.show()
 }
 
 main()
