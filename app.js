@@ -2,7 +2,6 @@ console.log('script')
 class Game {
 	constructor() {
 		this.score = 0
-
 	}
 
 }
@@ -18,9 +17,9 @@ class Dice {
 }
 
 class Die {
-	constructor(){
-		this.name = null 
-		this.value = null 
+	constructor(name, value){
+		this.name = name 
+		this.value = value 
 	}
 
 	show(){
@@ -35,9 +34,9 @@ function main(){
 
 	init(game)
 
-	rollDice()
+	rollDice(dice)
 
-	renderLogs(game)
+	renderLogs(game, dice)
 
 }
 
@@ -45,18 +44,18 @@ function init(game){
 	game.score = 0
 }
 
-function rollDice(){
-	console.log('roll dice function')
+function rollDice(dice){
 	for(let i = 1; i <= 5; i++) {
-		console.log(i)
-		let randomNum 
-		let newDie = new Die(i, randomNum)
-
+		let randomNum = Math.floor(Math.random() * (5 - 1) + 1)
+		console.log(randomNum)
+		let newDie = new Die(`die ${i}`, randomNum)
+		dice.array.push(newDie)
 	}
 }
 
 function renderLogs(game, dice){
 	console.log(game.score)
+	console.log(dice)
 }
 
 main()
