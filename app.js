@@ -1,5 +1,3 @@
-
-
 class Game {
   constructor() {
     this.score = 0;
@@ -87,16 +85,17 @@ function runGameTillEnd(game, dice) {
 }
 
 function renderButton(game, dice) {
-
- document.body.innerHTML += "<button>show dice</button>"
-	let button = document.querySelector('button')
-	button.addEventListener('click', () => { buttonAction() })
+  document.body.innerHTML += "<button>show dice</button>";
+  let button = document.querySelector("button");
+  button.addEventListener("click", () => {
+    buttonAction();
+  });
 }
 
-function buttonAction(){
-	console.log('test')
-	document.body.innerHTML += '<li>test</li>'
-
+function buttonAction() {
+  console.log("test");
+  document.body.innerHTML += "<li>test</li>";
+	console.log('balognia')
 }
 
 main();
