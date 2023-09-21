@@ -36,9 +36,10 @@ function main() {
   let game = new Game();
   let dice = new Dice();
 
-  init(game);
+  init(game, dice);
   //run game several times
-  runGameTillEnd(game, dice);
+  renderButton(game, dice);
+  //runGameTillEnd(game, dice);
 }
 
 function init(game) {
@@ -77,10 +78,16 @@ function countScore(game, dice) {
 }
 
 function runGameTillEnd(game, dice) {
+  //this is just a test
   while (game.diceCount != 0) {
     rollDice(game, dice);
     countScore(game, dice);
     renderLogs(game, dice);
+		document.body.innerHTML += `<p>Dice Roll: ${game.rollCount}</p>`;
+    dice.array.forEach((die) => {
+      document.body.innerHTML += `<p>Name ${die.name}</p>`;
+      document.body.innerHTML += `<p>Value ${die.value}</p>`;
+    });
   }
 }
 
@@ -88,15 +95,18 @@ function renderButton(game, dice) {
   document.body.innerHTML += "<button>show dice</button>";
   let button = document.querySelector("button");
   button.addEventListener("click", () => {
-    buttonAction();
+    buttonAction(game, dice);
   });
 }
 
-function buttonAction() {
-  console.log("test");
-  document.body.innerHTML += "<li>test</li>";
-	console.log('balognia')
+function buttonAction(game, dice) {
+  document.body.innerHTML = ``;
+	renderButton(game,dice)
+  document.body.innerHTML += `<h3>${game.score}</h3>`;
+  console.log("button action dice: ", dice);
+  init(game, dice);
+  runGameTillEnd(game, dice);
+  document.body.innerHTML += `<h3>${game.score}</h3>`;
 }
 
 main();
-renderButton();
